@@ -13,7 +13,8 @@ public class PracticeForm {
         int n = 0;
         String[] input = {"синий", "белый", "черный", "желтый"};
         String[] output = {"blue", "white", "black", "yellow"};
-        System.setProperty("webdriver.chrome.driver", "D:/AUT5/chromedriver.exe");
+        //System.setProperty("webdriver.chrome.driver", "D:/AUT5/chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "D:/Testing/Git/aut5/chromedriver.exe");
 
         WebDriver a = new ChromeDriver();
         a.get("http://www.toolsqa.com/automation-practice-form");

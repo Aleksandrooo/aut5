@@ -12,7 +12,8 @@ import java.util.List;
  */
 public class FirstWebdriver {
     public static void main (String[] args) throws InterruptedException {
-        System.setProperty("webdriver.chrome.driver", "D:/AUT5/chromedriver.exe");
+        //System.setProperty("webdriver.chrome.driver", "D:/AUT5/chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "D:/Testing/Git/aut5/chromedriver.exe");
 
         WebDriver a = new ChromeDriver();
         a.get("http://google.com");
