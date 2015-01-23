@@ -12,7 +12,7 @@ public class Main {
         t="hello";
         char e;
 
-        Box x = new Box;
+        Box x = new Box();
         //a.name();
         //System.out.println(a-hello);
         //System.out.print(c);
