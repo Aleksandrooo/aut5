@@ -8,8 +8,8 @@
     <SOURCES>
       <root url="file://$PROJECT_DIR$/../selenium-2.44.0" />
     </SOURCES>
-    <jarDirectory url="file://D:/Soft/IDE/selenium-java-2.33.0/libs" recursive="false" />
     <jarDirectory url="file://$PROJECT_DIR$/../selenium-2.44.0" recursive="false" />
+    <jarDirectory url="file://D:/Soft/IDE/selenium-java-2.33.0/libs" recursive="false" />
     <jarDirectory url="file://$PROJECT_DIR$/../selenium-2.44.0" recursive="false" type="SOURCES" />
   </library>
 </component>
