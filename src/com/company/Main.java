@@ -11,6 +11,9 @@ public class Main {
         d="Hello мир!";
         t="hello";
         char e;
+
+        Box x = new Box;
+        //a.name();
         //System.out.println(a-hello);
         //System.out.print(c);
       /*  if(true)
