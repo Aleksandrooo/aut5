@@ -35,40 +35,65 @@ public class demoqa_registration {
         printresult("Значениe по умолчанию firstname", Name.getText().equals(""));
         Name.sendKeys("Testa");
         Name = a.findElement(By.id("name_3_lastname"));
-        printresult("Значениt по умолчанию lastname", Name.getText().equals(""));
+        printresult("Значение по умолчанию lastname", Name.getText().equals(""));
         Name.sendKeys("Testik");
-        System.out.println("Testa  Testik");
+        //System.out.println("Testa  Testik");
 
 
         List<WebElement> Status = a.findElements(By.name("radio_4[]"));
+        i=0; boolean bl = true;
+        while (i < Status.size()){
+            if(Status.get(i).isSelected()){bl = false; break;
+            } else{ bl = true;}
+            i++;
+        }
+        printresult("Значение по умолчанию Marital Status ", bl);
         Status.get(1).click();
 
         List<WebElement> Hobby = a.findElements(By.name("checkbox_5[]"));
+        i=0;  bl = true;
+        while (i < Hobby.size()){
+            if(Hobby.get(i).isSelected()){bl = false; break;
+            }
+            i++;
+        }
+        printresult("Значение по умолчанию Hobby ", bl);
         Hobby.get(1).click();
 
         WebElement country = a.findElement(By.id("dropdown_7"));
         Select s = new Select(country);
+        printresult("Значение по умолчанию Country ",
+                country.findElements(By.tagName("option")).get(0).getText().equals("Afghanistan"));
         s.selectByValue("Ukraine");//).selectByVisibleText("Europe");
 
         WebElement month = a.findElement(By.id("mm_date_8"));
         s = new Select(month);
+        printresult("Значение по умолчанию Month ",
+                month.findElements(By.tagName("option")).get(0).getText().equals("Month"));
         s.selectByValue("10");
 
         WebElement day = a.findElement(By.id("dd_date_8"));
         s = new Select(day);
+        printresult("Значение по умолчанию Day ",
+                day.findElements(By.tagName("option")).get(0).getText().equals("Day"));
         s.selectByValue("21");
 
         WebElement year = a.findElement(By.id("yy_date_8"));
         s = new Select(year);
+        printresult("Значение по умолчанию Year ",
+                year.findElements(By.tagName("option")).get(0).getText().equals("Year"));
         s.selectByValue("2000");
 
         WebElement phone  = a.findElement(By.id("phone_9"));
+        printresult("Значение по умолчанию phone", phone.getText().equals(""));
         phone.sendKeys("0441112233");
 
         WebElement username = a.findElement(By.id("username"));
+        printresult("Значение по умолчанию username", username.getText().equals(""));
         username.sendKeys("LoginUser");
 
         WebElement email  = a.findElement(By.id("email_1"));
+        printresult("Значение по умолчанию email", email.getText().equals(""));
         email.sendKeys("email@mail.ua");
 
         WebElement Profile  = a.findElement(By.id("profile_pic_10"));
@@ -86,16 +111,20 @@ public class demoqa_registration {
         robot.keyRelease(KeyEvent.VK_ENTER);
 
         WebElement about = a.findElement(By.id("description"));
+        printresult("Значение по умолчанию About Yourself", about.getText().equals(""));
         about.sendKeys("Bla - bla bla Bla - bla blaBla - bla blaBla - bla blaBla - " +
                 "bla blaBla - bla blaBla - bla blaBla - bla bla ");
 
         WebElement password = a.findElement(By.id("password_2"));
+        printresult("Значение по умолчанию password", password.getText().equals(""));
         password.sendKeys("PASSpass1234!@#$");
 
         WebElement password2 = a.findElement(By.id("confirm_password_password_2"));
+        printresult("Значение по умолчанию Confirm Password", password2.getText().equals(""));
         password2.sendKeys("PASSpass1234!@#$");
 
         WebElement submit = a.findElement(By.name("pie_submit"));
+        printresult("Значение по умолчанию submit", submit.getAttribute("value").equals("Submit"));
         submit.click();
 
         //piereg_message  Thank you for your registration
