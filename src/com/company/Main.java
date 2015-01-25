@@ -1,15 +1,22 @@
 package com.company;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.interactions.Actions;
+
+import java.awt.*;
+import java.awt.datatransfer.StringSelection;
+
 public class Main {
 
     public static void main(String[] args) {
-	// write your code here
-        int  a =233, b = 0, f =0, hello =18 , old = 0;
-        double c =4.5;
-        boolean w=true;
+        // write your code here
+        int a = 233, b = 0, f = 0, hello = 18, old = 0;
+        double c = 4.5;
+        boolean w = true;
         String d, t;
-        d="Hello мир!";
-        t="hello";
+        d = "Hello мир!";
+        t = "hello";
         char e;
 
         Box x = new Box();
@@ -37,13 +44,35 @@ public class Main {
             System.out.println("b = " + b);
             if(b==30){ break;}
         }*/
-         b = 1 ; a = 0; f=1;
+        b = 1;
+        a = 0;
+        f = 1;
         //System.out.println("Fibo - " + fibo(7));
+        //System.out.println("func - " + func(4, "Hello"));
 
-        System.out.println("func - " + func(4, "Hello"));
+        //----------------------
+   /*        Box aa = new Box();
+        aa.name();
 
-    }
+        aa.rename("My New Funny Box");
+        aa.name();
 
+        Box bb = new Box();
+        bb.name();
+        bb.rename("Second Not SO Funny Box");
+        bb.name();
+
+        aa.name();
+
+        aa.findElement(By.id("firstNameNewCool"));
+
+        aa.fillFirstName("Oleksii");*/
+
+
+
+}
+
+    //----------------------------------
     public static String func(int n1, String str) {
         int i = 00; String nstr = "";
         while(i < n1 ) {

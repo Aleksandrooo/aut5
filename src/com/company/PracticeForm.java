@@ -5,25 +5,27 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
+
+import java.awt.*;
+import java.awt.datatransfer.StringSelection;
+import java.awt.event.KeyEvent;
 
 /**
  * Created by user on 1/21/15.
  */
 public class PracticeForm {
-    public static void main (String[] args) throws InterruptedException {
+    public static void main (String[] args) throws InterruptedException, AWTException {
         int n = 0;
-        //String[] input = {"синий", "белый", "черный", "желтый"};
-       // String[] output = {"blue", "white", "black", "yellow"};
-        System.setProperty("webdriver.chrome.driver", "D:/AUT5/chromedriver.exe");
-        //System.setProperty("webdriver.chrome.driver", "D:/Soft/IDE/chromedriver_win32/chromedriver.exe");
+       // System.setProperty("webdriver.chrome.driver", "D:/AUT5/chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "D:/Soft/IDE/chromedriver_win32/chromedriver.exe");
         //Automation Practice Form
         WebDriver a = new ChromeDriver();
         a.get("http://www.toolsqa.com/automation-practice-form");
         Thread.sleep(3000);
-        WebElement link1 = a.findElement(By.id("content")).findElements(By.tagName("a")).get(0);
-        //link1.click();
 
+       /* WebElement link1 = a.findElement(By.id("content")).findElements(By.tagName("a")).get(0);
         if (link1.getAttribute("href").equals("http://www.toolsqa.com/automation-practice-form/")){
             System.out.println("Test link1  : passed ");
         } else {
@@ -42,24 +44,35 @@ public class PracticeForm {
         command.sendKeys(Keys.CONTROL);
         s.selectByIndex(2);
 
-        //command.sendKeys(Keys.SHIFT);
-        //s.selectByIndex('4');
+        WebElement g = a.findElement(By.id("selenium_commands"));
+        Select s2 = new Select(g);
+
+        Actions f = new Actions(a).click(s2.getOptions().get(0)).keyDown(Keys.LEFT_SHIFT).click(s2.getOptions().get(4));
+        f.perform();
         n=0;
         while (n < s.getAllSelectedOptions().size()) {
             System.out.println(s.getAllSelectedOptions().get(n).getText());
             n++;
         }
+*/
 
+        a.findElement(By.id("photo")).click();
 
-       // setClipboardData("C:\\path to file\\example.jpg");
-//native key strokes for CTRL, V and ENTER keys
-      //  Robot robot = new Robot();
-     //   robot.keyPress(KeyEvent.VK_CONTROL);
-      //  robot.keyPress(KeyEvent.VK_V);
-      //  robot.keyRelease(KeyEvent.VK_V);
-      //  robot.keyRelease(KeyEvent.VK_CONTROL);
-      //  robot.keyPress(KeyEvent.VK_ENTER);
-     //   robot.keyRelease(KeyEvent.VK_ENTER);
+        //StringSelection ss = new StringSelection("C:\\MyWork\\AUT5\\newRepo\\.gitignore");
+        StringSelection ss = new StringSelection("D:\\Ris\\kot_40912552_big_.jpeg");
+
+        Toolkit.getDefaultToolkit().getSystemClipboard().setContents(ss, null);
+
+        //imitate mouse events like ENTER, CTRL+C, CTRL+V
+        Robot robot = new Robot();
+        //robot.keyPress(KeyEvent.VK_ENTER);
+        //robot.keyRelease(KeyEvent.VK_ENTER);
+        robot.keyPress(KeyEvent.VK_CONTROL);
+        robot.keyPress(KeyEvent.VK_V);
+        robot.keyRelease(KeyEvent.VK_V);
+        robot.keyRelease(KeyEvent.VK_CONTROL);
+        robot.keyPress(KeyEvent.VK_ENTER);
+        robot.keyRelease(KeyEvent.VK_ENTER);
 
      //   http://demoqa.com/
       /*  WebElement name = a.findElement(By.name("firstname"));

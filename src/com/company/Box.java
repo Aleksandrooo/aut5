@@ -1,13 +1,19 @@
 package com.company;
 
-/**
- * Created by user on 1/23/15.
- */
-public class Box {
-    private String boxName = "";
+import org.openqa.selenium.By;
 
-    public void name(){
-        System.out.println("Box");
+public class Box {
+    private String boxName = "Box";
+
+    public void name() {
+        System.out.println(boxName);
     }
 
+    public void rename(String newName) {
+        boxName = newName;
+    }
+
+    public void fillFirstName(String firstName) {
+        //aa.findElement(By.id("firstNameNewCool")).sendKeys(firstName);
+    }
 }
