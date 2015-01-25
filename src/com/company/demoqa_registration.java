@@ -25,10 +25,17 @@ public class demoqa_registration {
         WebDriver a = new ChromeDriver();
         a.get("http://demoqa.com/registration/");
         Thread.sleep(3000);
+        //-------------------------------
+       // System.out.println("Значения  по умолчанию");
+        //Name.getText();
+        //-------------------------------
 
         WebElement Name = a.findElement(By.id("name_3_firstname"));
+        //System.out.println("Значения  по умолчанию");
+        printresult("Значениe по умолчанию firstname", Name.getText().equals(""));
         Name.sendKeys("Testa");
         Name = a.findElement(By.id("name_3_lastname"));
+        printresult("Значениt по умолчанию lastname", Name.getText().equals(""));
         Name.sendKeys("Testik");
         System.out.println("Testa  Testik");
 
@@ -101,5 +108,15 @@ public class demoqa_registration {
         }
         */
        // a.quit();
+    }
+
+    public static  void printresult (String str, boolean passed){
+
+        if (passed){
+            System.out.println(str + " : passed ");
+        } else {
+            System.out.println(str + " : failed ");
+           // System.out.println(link1.getAttribute("href"));
+        }
     }
 }
