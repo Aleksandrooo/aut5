@@ -9,8 +9,8 @@ import org.openqa.selenium.support.ui.Select;
 import java.awt.*;
 import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
-import java.util.*;
 import java.util.List;
+import java.util.Random;
 
 /**
  * Created by Alex on 24.01.15.
@@ -19,22 +19,39 @@ public class demoqa_registration {
 
     public static void main (String[] args) throws InterruptedException, AWTException {
         int i = 0;
-        // System.setProperty("webdriver.chrome.driver", "D:/AUT5/chromedriver.exe");
-        System.setProperty("webdriver.chrome.driver", "D:/Soft/IDE/chromedriver_win32/chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "D:/AUT5/chromedriver.exe");
+        //System.setProperty("webdriver.chrome.driver", "D:/Soft/IDE/chromedriver_win32/chromedriver.exe");
 
         WebDriver a = new ChromeDriver();
         a.get("http://demoqa.com/registration/");
         Thread.sleep(3000);
+        String forName = "qwertyuiopasdfghjklQWERTYUIOASGHJKLZXCVBNM";
+        Random r = new Random();
+        int o =0;
+        String userName = "";
+        while( o < 10){
+            int nnn = r.nextInt(forName.length());
+            userName = userName + forName.charAt(nnn);
+            o++;
+         }
+
+        //////new Random().
         //-------------------------------
        // System.out.println("Значения  по умолчанию");
         //Name.getText();
         //-------------------------------
 
         WebElement Name = a.findElement(By.id("name_3_firstname"));
+       // Name = a.findElement(By.xpath("//input[@name='first_name']/../label"));
+        WebElement label1 = a.findElement(By.xpath("//div[input[@name='first_name']]/label"));
+        System.out.println(label1.getText());
         //System.out.println("Значения  по умолчанию");
         printresult("Значениe по умолчанию firstname", Name.getText().equals(""));
         Name.sendKeys("Testa");
+
         Name = a.findElement(By.id("name_3_lastname"));
+        label1 = a.findElement(By.xpath("//div[input[@name='last_name']]/label"));
+        System.out.println(label1.getText());
         printresult("Значение по умолчанию lastname", Name.getText().equals(""));
         Name.sendKeys("Testik");
         //System.out.println("Testa  Testik");
@@ -98,8 +115,10 @@ public class demoqa_registration {
 
         WebElement Profile  = a.findElement(By.id("profile_pic_10"));
         Profile.click();
+        Thread.sleep(3000);
         //StringSelection ss = new StringSelection("C:\\MyWork\\AUT5\\newRepo\\.gitignore");
-        StringSelection ss = new StringSelection("D:\\Ris\\kot_40912552_big_.jpeg");
+        //StringSelection ss = new StringSelection("D:\\Ris\\kot_40912552_big_.jpeg");
+        StringSelection ss = new StringSelection("D:\\AUT5\\ris1.JPG");
         Toolkit.getDefaultToolkit().getSystemClipboard().setContents(ss, null);
         //imitate mouse events like ENTER, CTRL+C, CTRL+V
         Robot robot = new Robot();
