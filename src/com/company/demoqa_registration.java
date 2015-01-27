@@ -19,13 +19,13 @@ public class demoqa_registration {
 
     public static void main (String[] args) throws InterruptedException, AWTException {
         int i = 0;
-        System.setProperty("webdriver.chrome.driver", "D:/AUT5/chromedriver.exe");
-        //System.setProperty("webdriver.chrome.driver", "D:/Soft/IDE/chromedriver_win32/chromedriver.exe");
+        //System.setProperty("webdriver.chrome.driver", "D:/AUT5/chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "D:/Soft/IDE/chromedriver_win32/chromedriver.exe");
 
         WebDriver a = new ChromeDriver();
         a.get("http://demoqa.com/registration/");
         Thread.sleep(3000);
-        String forName = "qwertyuiopasdfghjklQWERTYUIOASGHJKLZXCVBNM";
+       /* String forName = "qwertyuiopasdfghjklQWERTYUIOASGHJKLZXCVBNM";
         Random r = new Random();
         int o =0;
         String userName = "";
@@ -33,7 +33,7 @@ public class demoqa_registration {
             int nnn = r.nextInt(forName.length());
             userName = userName + forName.charAt(nnn);
             o++;
-         }
+         }*/
 
         //////new Random().
         //-------------------------------
@@ -65,6 +65,12 @@ public class demoqa_registration {
             i++;
         }
         printresult("Значение по умолчанию Marital Status ", bl);
+        List<WebElement> labels = a.findElements(By.xpath("//div[input[@name='radio_4[]']]/label"));
+        i=0;
+        while(i < labels.size() ){
+            System.out.print("Label - " + labels.get(i).getText() +  "; ");
+            i++;
+        }
         Status.get(1).click();
 
         List<WebElement> Hobby = a.findElements(By.name("checkbox_5[]"));
@@ -75,6 +81,12 @@ public class demoqa_registration {
             i++;
         }
         printresult("Значение по умолчанию Hobby ", bl);
+        labels = a.findElements(By.xpath("//div[input[@name='checkbox_5[]']]/label"));
+        i=0;
+        while(i < labels.size() ){
+            System.out.print("Label - " + labels.get(i).getText() + "; ");
+            i++;
+        }
         Hobby.get(1).click();
 
         WebElement country = a.findElement(By.id("dropdown_7"));
@@ -103,6 +115,9 @@ public class demoqa_registration {
 
         WebElement phone  = a.findElement(By.id("phone_9"));
         printresult("Значение по умолчанию phone", phone.getText().equals(""));
+        //label1 = a.findElement(By.xpath("//input[@id='phone_9']/.label"));
+        label1 = a.findElement(By.xpath("//div[input[@name='phone_9']]/label"));
+        System.out.println("Label - " + label1.getText());
         phone.sendKeys("0441112233");
 
         WebElement username = a.findElement(By.id("username"));
@@ -117,8 +132,8 @@ public class demoqa_registration {
         Profile.click();
         Thread.sleep(3000);
         //StringSelection ss = new StringSelection("C:\\MyWork\\AUT5\\newRepo\\.gitignore");
-        //StringSelection ss = new StringSelection("D:\\Ris\\kot_40912552_big_.jpeg");
-        StringSelection ss = new StringSelection("D:\\AUT5\\ris1.JPG");
+        StringSelection ss = new StringSelection("D:\\Ris\\kot_40912552_big_.jpeg");
+        //StringSelection ss = new StringSelection("D:\\AUT5\\ris1.JPG");
         Toolkit.getDefaultToolkit().getSystemClipboard().setContents(ss, null);
         //imitate mouse events like ENTER, CTRL+C, CTRL+V
         Robot robot = new Robot();
