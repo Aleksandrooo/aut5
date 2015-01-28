@@ -10,7 +10,6 @@ import java.awt.*;
 import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
 import java.util.List;
-import java.util.Random;
 
 /**
  * Created by Alex on 24.01.15.
@@ -19,8 +18,8 @@ public class demoqa_registration {
 
     public static void main (String[] args) throws InterruptedException, AWTException {
         int i = 0;
-        //System.setProperty("webdriver.chrome.driver", "D:/AUT5/chromedriver.exe");
-        System.setProperty("webdriver.chrome.driver", "D:/Soft/IDE/chromedriver_win32/chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "D:/AUT5/chromedriver.exe");
+        //System.setProperty("webdriver.chrome.driver", "D:/Soft/IDE/chromedriver_win32/chromedriver.exe");
 
         WebDriver a = new ChromeDriver();
         a.get("http://demoqa.com/registration/");
@@ -115,8 +114,8 @@ public class demoqa_registration {
 
         WebElement phone  = a.findElement(By.id("phone_9"));
         printresult("Значение по умолчанию phone", phone.getText().equals(""));
-        //label1 = a.findElement(By.xpath("//input[@id='phone_9']/.label"));
-        label1 = a.findElement(By.xpath("//div[input[@name='phone_9']]/label"));
+        label1 = a.findElement(By.xpath("//input[@id='phone_9']/preceding-sibling::label"));
+        //label1 = a.findElement(By.xpath("//div[input[@name='phone_9']]/label"));
         System.out.println("Label - " + label1.getText());
         phone.sendKeys("0441112233");
 
