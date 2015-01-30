@@ -28,8 +28,8 @@ public class FirstTests {
 
     @Before
     public void  Init() throws InterruptedException {
-        //System.setProperty("webdriver.chrome.driver", "D:/AUT5/chromedriver.exe");
-        System.setProperty("webdriver.chrome.driver", "D:/Soft/IDE/chromedriver_win32/chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "D:/AUT5/chromedriver.exe");
+        //System.setProperty("webdriver.chrome.driver", "D:/Soft/IDE/chromedriver_win32/chromedriver.exe");
         w = new ChromeDriver();
         //w.get("http://demoqa.com/registration/");
         RegistrationForm.open(w);
@@ -41,8 +41,8 @@ public class FirstTests {
     public void  CleanUp() throws IOException {
         if (!testPassed) {
             File scrFile = ((TakesScreenshot)w).getScreenshotAs(OutputType.FILE);
-            //FileUtils.copyFile(scrFile, new File("c:\\tmp\\" + name.getMethodName() + ".png"));
-            FileUtils.copyFile(scrFile, new File("d:\\Testing\\temp\\" + name.getMethodName() + ".png"));
+            FileUtils.copyFile(scrFile, new File("D:\\AUT5\\temp\\" + name.getMethodName() + ".png"));
+            //FileUtils.copyFile(scrFile, new File("d:\\Testing\\temp\\" + name.getMethodName() + ".png"));
         }
         w.quit();
     }
@@ -67,6 +67,8 @@ public class FirstTests {
         //WebElement label1 = w.findElement(By.xpath("//div[input[@name='last_name']]/label"));
         Assert.assertEquals("First Name", RegistrationForm.getLabelFirstName(w));
         Assert.assertEquals("Last Name", RegistrationForm.getLabelLastName(w));
+        testPassed = true;
+
     }
 
     @Test
@@ -79,6 +81,7 @@ public class FirstTests {
         Assert.assertEquals("Month", RegistrationForm.getMonth(w));
         Assert.assertEquals("Day", RegistrationForm.getDay(w));
         Assert.assertEquals("Year", RegistrationForm.getYear(w));
+        testPassed = true;
 
 
     }
@@ -90,6 +93,7 @@ public class FirstTests {
         submit.click();
         WebElement errormes = w.findElement(By.xpath("//div[@class='legend_txt']/span"));
         Assert.assertEquals("* This field is required", errormes.getText());
+        testPassed = true;
 
     }
 }
