@@ -20,11 +20,13 @@ public class AngelForm {
 
     public static void setMaster(WebDriver webDriver, String s) {
         WebElement f = webDriver.findElement(By.xpath(masterXpath));
+        f.clear();
         f.sendKeys(s);
     }
 
     public static void setSite(WebDriver webDriver, String s) {
         WebElement f = webDriver.findElement(By.xpath(siteXpath));
+        f.clear();
         f.sendKeys(s);
     }
 
@@ -42,5 +44,10 @@ public class AngelForm {
         WebElement f = webDriver.findElement(By.xpath(masterXpath));
         return f.getAttribute("value");
 
+    }
+
+    public static String getSite(WebDriver webDriver) {
+        WebElement f = webDriver.findElement(By.xpath(siteXpath));
+        return f.getAttribute("value");
     }
 }

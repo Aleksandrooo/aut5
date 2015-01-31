@@ -28,6 +28,7 @@ public class RegistrationForm {
 
     public static void setFirstName(WebDriver w, String i){
         WebElement f = w.findElement(By.xpath(firstNameXpath));
+        f.clear();
         f.sendKeys(i);
     }
 
