@@ -10,9 +10,12 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import java.awt.*;
+import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.IOException;
 import java.util.*;
+import java.util.List;
 
 /**
  * Created by user on 1/30/15.
@@ -142,6 +145,31 @@ public class AngelTests {
                 }
             }
         }
+    }
+
+    @Test
+    public void pushEnter_GeneratePasswordCorrect() throws AWTException {
+        AngelForm.setMaster(webDriver, "asdasd");
+        Robot robot = new Robot();
+        robot.keyPress(KeyEvent.VK_TAB);
+        robot.keyRelease(KeyEvent.VK_TAB);
+        AngelForm.setSite(webDriver, "angel.net");
+        robot.keyPress(KeyEvent.VK_ENTER);
+        robot.keyRelease(KeyEvent.VK_ENTER);
+        Assert.assertEquals("B9ya7yayeK/Zn@1a", AngelForm.getPassword(webDriver));
+    }
+
+    @Test
+    public void refreshPage_emptyMasterSitePassword() throws AWTException {
+        AngelForm.setMaster(webDriver, "asdasd");
+        AngelForm.setSite(webDriver, "angel.net");
+        AngelForm.generate(webDriver);
+        Robot robot = new Robot();
+        robot.keyPress(KeyEvent.VK_F5);
+        robot.keyRelease(KeyEvent.VK_F5);
+        Assert.assertEquals("", AngelForm.getMaster(webDriver));
+        Assert.assertEquals("", AngelForm.getSite(webDriver));
+        Assert.assertEquals("", AngelForm.getPassword(webDriver));
     }
 
     @After
