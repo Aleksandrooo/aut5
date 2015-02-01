@@ -28,8 +28,8 @@ public class FirstTests {
 
     @Before
     public void  Init() throws InterruptedException {
-        System.setProperty("webdriver.chrome.driver", "D:/AUT5/chromedriver.exe");
-        //System.setProperty("webdriver.chrome.driver", "D:/Soft/IDE/chromedriver_win32/chromedriver.exe");
+        //System.setProperty("webdriver.chrome.driver", "D:/AUT5/chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "D:/Soft/IDE/chromedriver_win32/chromedriver.exe");
         w = new ChromeDriver();
         //w.get("http://demoqa.com/registration/");
         RegistrationForm.open(w);
@@ -41,8 +41,8 @@ public class FirstTests {
     public void  CleanUp() throws IOException {
         if (!testPassed) {
             File scrFile = ((TakesScreenshot)w).getScreenshotAs(OutputType.FILE);
-            FileUtils.copyFile(scrFile, new File("D:\\AUT5\\temp\\" + name.getMethodName() + ".png"));
-            //FileUtils.copyFile(scrFile, new File("d:\\Testing\\temp\\" + name.getMethodName() + ".png"));
+            //FileUtils.copyFile(scrFile, new File("D:\\AUT5\\temp\\" + name.getMethodName() + ".png"));
+            FileUtils.copyFile(scrFile, new File("d:\\Testing\\temp\\" + name.getMethodName() + ".png"));
         }
         w.quit();
     }
@@ -64,9 +64,16 @@ public class FirstTests {
 
     @Test
     public void MyTest2() throws InterruptedException, IOException {
-        //WebElement label1 = w.findElement(By.xpath("//div[input[@name='last_name']]/label"));
-        Assert.assertEquals("First Name", RegistrationForm.getLabelFirstName(w));
-        Assert.assertEquals("Last Name", RegistrationForm.getLabelLastName(w));
+
+        //Assert.assertEquals("First Name", RegistrationForm.getLabelFirstName(w));
+        //Assert.assertEquals("Last Name", RegistrationForm.getLabelLastName(w));
+        //Assert.assertEquals("Marital Status", RegistrationForm.getLabelMaritalStatus(w));
+        //Assert.assertEquals("Single", RegistrationForm.getLabelSingle(w));
+        //!Assert.assertEquals("Married", RegistrationForm.getLabelMarried(w));
+        //!Assert.assertEquals("Divorced", RegistrationForm.getLabelDivorced(w));
+        Assert.assertEquals("Hobby", RegistrationForm.getLabelHobby(w));
+        Assert.assertEquals("Country", RegistrationForm.getLabelCountry(w));
+        Assert.assertEquals("Date of Birth", RegistrationForm.getLabelDateOfBirth(w));
         testPassed = true;
 
     }
