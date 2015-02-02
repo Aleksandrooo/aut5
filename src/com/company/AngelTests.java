@@ -31,8 +31,8 @@ public class AngelTests {
 
     @Before
     public void  Init() throws InterruptedException {
-        //System.setProperty("webdriver.chrome.driver", "D:/AUT5/chromedriver.exe");
-        System.setProperty("webdriver.chrome.driver", "D:/Soft/IDE/chromedriver_win32/chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "D:/AUT5/chromedriver.exe");
+        //System.setProperty("webdriver.chrome.driver", "D:/Soft/IDE/chromedriver_win32/chromedriver.exe");
         webDriver = new ChromeDriver();
         AngelForm.open(webDriver);
         testPassed = false;
@@ -80,7 +80,7 @@ public class AngelTests {
     }
 
     @Test
-    public void fillMasterSpecialSymbols(){
+    public void fillMasterSpecialSymbols() throws InterruptedException {
         AngelForm.setMaster(webDriver, "ASdfйцУК12!@#$%^&**()_+={}|?><");
         AngelForm.setSite(webDriver, "angel.net");
         AngelForm.generate(webDriver);
@@ -89,7 +89,7 @@ public class AngelTests {
     }
 
     @Test
-    public void fillMaster32_fillSite128(){
+    public void fillMaster32_fillSite128() throws InterruptedException {
         AngelForm.setMaster(webDriver, "aaaaaaaabbbbbbbbccccccccccdddddddd");
         AngelForm.setSite(webDriver, "aaaaaaaabbbbbbbbccccccccccdddddddd" +
                 "aaaaaaaabbbbbbbbccccccccccdddddddd" +
@@ -120,7 +120,7 @@ public class AngelTests {
     @Test
     public void fillMasterPass_fillSitePass_GereratePassword1000(){
         int i, j;
-        for (i=0; i<200; i++){
+        for (i=0; i<10; i++){
             AngelForm.setMaster(webDriver, "qwerty");
             AngelForm.setSite(webDriver, "angel.net");
             AngelForm.generate(webDriver);
@@ -132,14 +132,14 @@ public class AngelTests {
     public void Gererate1000DifferentPasswords(){
         int i, j;
         List<String> passwords = new ArrayList<String>();
-        for (i=0; i<100; i++){
+        for (i=0; i<10; i++){
             AngelForm.setMaster(webDriver, "qwerty");
             AngelForm.setSite(webDriver, "angel.net" + i);
             AngelForm.generate(webDriver);
             passwords.add(i, AngelForm.getPassword(webDriver));
         }
-        for (i=0; i<100; i++){
-            for(j=0; j<100; j++){
+        for (i=0; i<10; i++){
+            for(j=0; j<10; j++){
                 if(i!=j){
                     Assert.assertNotEquals(passwords.get(i), passwords.get(j));
                 }
@@ -160,13 +160,14 @@ public class AngelTests {
     }
 
     @Test
-    public void refreshPage_emptyMasterSitePassword() throws AWTException {
+    public void refreshPage_emptyMasterSitePassword() throws AWTException, InterruptedException {
         AngelForm.setMaster(webDriver, "asdasd");
         AngelForm.setSite(webDriver, "angel.net");
         AngelForm.generate(webDriver);
         Robot robot = new Robot();
         robot.keyPress(KeyEvent.VK_F5);
         robot.keyRelease(KeyEvent.VK_F5);
+        Thread.sleep(5000);
         Assert.assertEquals("", AngelForm.getMaster(webDriver));
         Assert.assertEquals("", AngelForm.getSite(webDriver));
         Assert.assertEquals("", AngelForm.getPassword(webDriver));

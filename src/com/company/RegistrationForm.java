@@ -16,11 +16,11 @@ public class RegistrationForm {
     private static String lastNameXpath = "//input[@name='last_name']";
     private static String labelLastNameXpath = lastNameXpath + "/preceding-sibling::label";
     private static String maritalStatusXpath = "//input[@name='radio_4[]']";
-    //private static String labelMaritalStatusXpath = maritalStatusXpath + "..preceding-sibling::label";
-    private static String labelMaritalStatusXpath = "//div[@class='fieldset']/label[@for='radio_4']";
-    private static String labelSingleXpath = "//input[@name='radio_4[]'][@value='single']/preceding-sibling::label";
-    private static String labelMarriedXpath = "//input[@name='radio_4[]'][@value='married']/preceding-sibling::label[2]";
-    private static String labelDivorcedXpath = "//input[@name='radio_4[]'][@value='Divorced']/preceding-sibling::label[3]";
+    private static String labelMaritalStatusXpath = maritalStatusXpath + "/preceding::label[2]";
+    //private static String labelMaritalStatusXpath = "//div[@class='fieldset']/label[@for='radio_4']";
+    private static String labelSingleXpath = "//input[@name='radio_4[]'][@value='single']/preceding-sibling::label[1]";
+    private static String labelMarriedXpath = "//input[@name='radio_4[]'][@value='married']/preceding-sibling::label[1]";
+    private static String labelDivorcedXpath = "//input[@name='radio_4[]'][@value='Divorced']/preceding-sibling::label[1]";
     private static String hobbyXpath = "//div[@class='radio_wrap']/input[@name='checkbox_5[]']";
     private static String labelHobbyXpath = "//div[@class='fieldset']/label[@for='checkbox_5']";
     private static String countryXpath = "//div[@class='fieldset']/select[@name='dropdown_7']";
