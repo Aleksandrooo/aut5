@@ -31,8 +31,8 @@ public class AngelTests {
 
     @Before
     public void  Init() throws InterruptedException {
-        System.setProperty("webdriver.chrome.driver", "D:/AUT5/chromedriver.exe");
-        //System.setProperty("webdriver.chrome.driver", "D:/Soft/IDE/chromedriver_win32/chromedriver.exe");
+        //System.setProperty("webdriver.chrome.driver", "D:/AUT5/chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "D:/Soft/IDE/chromedriver_win32/chromedriver.exe");
         webDriver = new ChromeDriver();
         AngelForm.open(webDriver);
         testPassed = false;
@@ -40,7 +40,7 @@ public class AngelTests {
     }
 
     @Test
-    public void emptyMaster_PasswordGererates(){
+    public void emptyMaster_PasswordGererates() throws InterruptedException {
         AngelForm.setMaster(webDriver, "");
         AngelForm.setSite(webDriver, "angel.net");
         AngelForm.generate(webDriver);
@@ -48,7 +48,7 @@ public class AngelTests {
     }
 
     @Test
-     public void emptySite_PasswordGererates(){
+     public void emptySite_PasswordGererates() throws InterruptedException {
         AngelForm.setMaster(webDriver, "asdasd");
         AngelForm.setSite(webDriver, "");
         AngelForm.generate(webDriver);
@@ -56,7 +56,7 @@ public class AngelTests {
     }
 
     @Test
-    public void emptyMaster_emptySite_PasswordGererates(){
+    public void emptyMaster_emptySite_PasswordGererates() throws InterruptedException {
         AngelForm.setMaster(webDriver, "");
         AngelForm.setSite(webDriver, "");
         AngelForm.generate(webDriver);
@@ -64,7 +64,7 @@ public class AngelTests {
     }
 
     @Test
-     public void fillMaster_fillSite_PasswordCorrect(){
+     public void fillMaster_fillSite_PasswordCorrect() throws InterruptedException {
         AngelForm.setMaster(webDriver, "asdasd");
         AngelForm.setSite(webDriver, "angel.net");
         AngelForm.generate(webDriver);
@@ -72,7 +72,7 @@ public class AngelTests {
     }
 
     @Test
-    public void differentMaster_fillSite(){
+    public void differentMaster_fillSite() throws InterruptedException {
         AngelForm.setMaster(webDriver, "qweqwe");
         AngelForm.setSite(webDriver, "angel.net");
         AngelForm.generate(webDriver);
@@ -105,7 +105,7 @@ public class AngelTests {
     }
 
     @Test
-    public void fillMasterPass_fillSitePass_PasswordCorrect(){
+    public void fillMasterPass_fillSitePass_PasswordCorrect() throws InterruptedException {
         String s = "";
         AngelForm.setMaster(webDriver, "asdasd");
         AngelForm.setSite(webDriver, "angel.net");
@@ -118,7 +118,7 @@ public class AngelTests {
     }
 
     @Test
-    public void fillMasterPass_fillSitePass_GereratePassword1000(){
+    public void fillMasterPass_fillSitePass_GereratePassword1000() throws InterruptedException {
         int i, j;
         for (i=0; i<10; i++){
             AngelForm.setMaster(webDriver, "qwerty");
@@ -129,7 +129,7 @@ public class AngelTests {
     }
 
     @Test
-    public void Gererate1000DifferentPasswords(){
+    public void Gererate1000DifferentPasswords() throws InterruptedException {
         int i, j;
         List<String> passwords = new ArrayList<String>();
         for (i=0; i<10; i++){
@@ -148,7 +148,7 @@ public class AngelTests {
     }
 
     @Test
-    public void pushEnter_GeneratePasswordCorrect() throws AWTException {
+    public void pushEnter_GeneratePasswordCorrect() throws AWTException, InterruptedException {
         AngelForm.setMaster(webDriver, "asdasd");
         Robot robot = new Robot();
         robot.keyPress(KeyEvent.VK_TAB);
@@ -177,8 +177,8 @@ public class AngelTests {
     public void  CleanUp() throws IOException {
         if (!testPassed) {
             File scrFile = ((TakesScreenshot)webDriver).getScreenshotAs(OutputType.FILE);
-            FileUtils.copyFile(scrFile, new File("D:\\AUT5\\temp\\" + name.getMethodName() + ".png"));
-            //FileUtils.copyFile(scrFile, new File("d:\\Testing\\temp\\" + name.getMethodName() + ".png"));
+            //FileUtils.copyFile(scrFile, new File("D:\\AUT5\\temp\\" + name.getMethodName() + ".png"));
+            FileUtils.copyFile(scrFile, new File("d:\\Testing\\temp\\" + name.getMethodName() + ".png"));
         }
         webDriver.quit();
     }
