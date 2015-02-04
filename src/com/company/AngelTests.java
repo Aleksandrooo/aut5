@@ -31,8 +31,8 @@ public class AngelTests {
 
     @Before
     public void  Init() throws InterruptedException {
-        //System.setProperty("webdriver.chrome.driver", "D:/AUT5/chromedriver.exe");
-        System.setProperty("webdriver.chrome.driver", "D:/Soft/IDE/chromedriver_win32/chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "D:/AUT5/chromedriver.exe");
+        //System.setProperty("webdriver.chrome.driver", "D:/Soft/IDE/chromedriver_win32/chromedriver.exe");
         webDriver = new ChromeDriver();
         AngelForm.open(webDriver);
         testPassed = false;
@@ -44,7 +44,9 @@ public class AngelTests {
         AngelForm.setMaster(webDriver, "");
         AngelForm.setSite(webDriver, "angel.net");
         AngelForm.generate(webDriver);
-        Assert.assertEquals("Is2nfhWTJLvq0@1a", AngelForm.getPassword(webDriver));
+       // waitElements.waitValue(webDriver, passwordXpath, val);
+        AngelForm.assertPassword(webDriver, "Is2nfhWTJLvq0@1a");
+        //waitElements.waitValue(webDriver, "Is2nfhWTJLvq0@1a");
     }
 
     @Test
@@ -177,8 +179,8 @@ public class AngelTests {
     public void  CleanUp() throws IOException {
         if (!testPassed) {
             File scrFile = ((TakesScreenshot)webDriver).getScreenshotAs(OutputType.FILE);
-            //FileUtils.copyFile(scrFile, new File("D:\\AUT5\\temp\\" + name.getMethodName() + ".png"));
-            FileUtils.copyFile(scrFile, new File("d:\\Testing\\temp\\" + name.getMethodName() + ".png"));
+            FileUtils.copyFile(scrFile, new File("D:\\AUT5\\temp\\" + name.getMethodName() + ".png"));
+            //FileUtils.copyFile(scrFile, new File("d:\\Testing\\temp\\" + name.getMethodName() + ".png"));
         }
         webDriver.quit();
     }
