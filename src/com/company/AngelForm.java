@@ -24,60 +24,60 @@ public class AngelForm {
 
     public static void setMaster(WebDriver webDriver, String s) throws InterruptedException {
         //WebElement f = webDriver.findElement(By.xpath(masterXpath));
-        WebElement f = waitElements(webDriver, masterXpath);
+        WebElement f = waitElements.waitElement(webDriver, masterXpath);
         f.clear();
         f.sendKeys(s);
     }
 
     public static void setSite(WebDriver webDriver, String s) throws InterruptedException {
         //WebElement f = webDriver.findElement(By.xpath(siteXpath));
-        WebElement f = waitElements(webDriver, siteXpath);
+        WebElement f = waitElements.waitElement(webDriver, siteXpath);
         f.clear();
         f.sendKeys(s);
     }
 
     public static void generate(WebDriver webDriver) throws InterruptedException {
         //WebElement submit = webDriver.findElement(By.xpath(submitXpath));
-        WebElement submit = waitElements(webDriver, submitXpath);
+        WebElement submit = waitElements.waitElement(webDriver, submitXpath);
         submit.click();
     }
 
     public static String getPassword(WebDriver webDriver) throws InterruptedException {
         //WebElement f = webDriver.findElement(By.xpath(passwordXpath));
-        WebElement f = waitElements(webDriver, passwordXpath);
+        WebElement f = waitElements.waitElement(webDriver, passwordXpath);
 
         return f.getAttribute("value");
     }
 
     public static String getMaster(WebDriver webDriver) throws InterruptedException {
         //WebElement f = webDriver.findElement(By.xpath(masterXpath));
-        WebElement f = waitElements(webDriver, masterXpath);
+        WebElement f = waitElements.waitElement(webDriver, masterXpath);
         return f.getAttribute("value");
 
     }
 
     public static String getSite(WebDriver webDriver) throws InterruptedException {
         //WebElement f = webDriver.findElement(By.xpath(siteXpath));
-        WebElement f = waitElements(webDriver, siteXpath);
+        WebElement f = waitElements.waitElement(webDriver, siteXpath);
         return f.getAttribute("value");
     }
 
-    public static WebElement waitElements(WebDriver webDriver,  String path) throws InterruptedException {
-       WebElement we = null; // = webDriver.findElement(By.xpath(siteXpath));
-        int timeout = 30000, timepassed = 0, s;
-        while(timepassed < timeout) {
-            s = webDriver.findElements(By.xpath(path)).size();
-            //if (webDriver.findElements(By.xpath(path)).size() > 0) {
-            if (s > 0) {
-                we = webDriver.findElements(By.xpath(path)).get(0);
-                System.out.println(we.getAttribute("value"));
-                break;
-            }
-            Thread.sleep(100);
-            timepassed += 100;
-            System.out.println(timepassed);
-        }
-        return we;
-    }
+//    public static WebElement waitElements(WebDriver webDriver,  String path) throws InterruptedException {
+//       WebElement we = null; // = webDriver.findElement(By.xpath(siteXpath));
+//        int timeout = 30000, timepassed = 0, s;
+//        while(timepassed < timeout) {
+//            s = webDriver.findElements(By.xpath(path)).size();
+//            //if (webDriver.findElements(By.xpath(path)).size() > 0) {
+//            if (s > 0) {
+//                we = webDriver.findElements(By.xpath(path)).get(0);
+//                System.out.println(we.getAttribute("value"));
+//                break;
+//            }
+//            Thread.sleep(100);
+//            timepassed += 100;
+//            System.out.println(timepassed);
+//        }
+//        return we;
+//    }
 
 }
