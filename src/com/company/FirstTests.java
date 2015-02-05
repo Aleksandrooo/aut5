@@ -67,11 +67,14 @@ public class FirstTests {
 
         //Assert.assertEquals("First Name", RegistrationForm.getLabelFirstName(w));
         //Assert.assertEquals("Last Name", RegistrationForm.getLabelLastName(w));
-        //Assert.assertEquals("Marital Status", RegistrationForm.getLabelMaritalStatus(w));
-        //Assert.assertEquals("Single", RegistrationForm.getLabelSingle(w));
-        //!Assert.assertEquals("Married", RegistrationForm.getLabelMarried(w));
-        //!Assert.assertEquals("Divorced", RegistrationForm.getLabelDivorced(w));
+        Assert.assertEquals("Marital Status", RegistrationForm.getLabelMaritalStatus(w));
+        Assert.assertEquals("Single", RegistrationForm.getLabelSingle(w));
+        Assert.assertEquals("Married", RegistrationForm.getLabelMarried(w));
+        Assert.assertEquals("Divorced", RegistrationForm.getLabelDivorced(w));
         Assert.assertEquals("Hobby", RegistrationForm.getLabelHobby(w));
+        Assert.assertEquals("Dance", RegistrationForm.getLabelDance(w));
+        Assert.assertEquals("Reading", RegistrationForm.getLabelReading(w));
+        Assert.assertEquals("Cricket", RegistrationForm.getLabelCricket(w));
         Assert.assertEquals("Country", RegistrationForm.getLabelCountry(w));
         Assert.assertEquals("Date of Birth", RegistrationForm.getLabelDateOfBirth(w));
         testPassed = true;

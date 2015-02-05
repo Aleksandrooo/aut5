@@ -20,9 +20,12 @@ public class RegistrationForm {
     //private static String labelMaritalStatusXpath = "//div[@class='fieldset']/label[@for='radio_4']";
     private static String labelSingleXpath = "//input[@name='radio_4[]'][@value='single']/preceding-sibling::label[1]";
     private static String labelMarriedXpath = "//input[@name='radio_4[]'][@value='married']/preceding-sibling::label[1]";
-    private static String labelDivorcedXpath = "//input[@name='radio_4[]'][@value='Divorced']/preceding-sibling::label[1]";
+    private static String labelDivorcedXpath = "//input[@name='radio_4[]'][@value='divorced']/preceding-sibling::label[1]";
     private static String hobbyXpath = "//div[@class='radio_wrap']/input[@name='checkbox_5[]']";
     private static String labelHobbyXpath = "//div[@class='fieldset']/label[@for='checkbox_5']";
+    private static String labelDanceXpath = "//input[@name='checkbox_5[]'][@value='dance']/preceding-sibling::label[1]";
+    private static String labelReadingXpath = "//input[@name='checkbox_5[]'][@value='reading']/preceding-sibling::label[1]";
+    private static String labelCricketXpath = "//input[@name='checkbox_5[]'][@value='cricket ']/preceding-sibling::label[1]";
     private static String countryXpath = "//div[@class='fieldset']/select[@name='dropdown_7']";
     private static String labelCountryXpath = countryXpath + "/preceding-sibling::label";
     private static String monthXpath = "//select[@id='mm_date_8']";
@@ -169,6 +172,21 @@ public class RegistrationForm {
 
     public static String getLabelHobby(WebDriver w){
         WebElement f = w.findElement(By.xpath(labelHobbyXpath));
+        return f.getText();
+    }
+
+    public static String getLabelDance(WebDriver w){
+        WebElement f = w.findElement(By.xpath(labelDanceXpath));
+        return f.getText();
+    }
+
+    public static String getLabelReading(WebDriver w){
+        WebElement f = w.findElement(By.xpath(labelReadingXpath));
+        return f.getText();
+    }
+
+    public static String getLabelCricket(WebDriver w){
+        WebElement f = w.findElement(By.xpath(labelCricketXpath));
         return f.getText();
     }
 
