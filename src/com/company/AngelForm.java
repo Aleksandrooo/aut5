@@ -23,26 +23,26 @@ public class AngelForm {
 
     public static void setMaster(WebDriver webDriver, String s) throws InterruptedException {
         //WebElement f = webDriver.findElement(By.xpath(masterXpath));
-        WebElement f = testHelper.waitElement(webDriver, masterXpath);
+        WebElement f = TestHelper.waitElement(webDriver, masterXpath);
         f.clear();
         f.sendKeys(s);
     }
 
     public static void setSite(WebDriver webDriver, String s) throws InterruptedException {
         //WebElement f = webDriver.findElement(By.xpath(siteXpath));
-        WebElement f = testHelper.waitElement(webDriver, siteXpath);
+        WebElement f = TestHelper.waitElement(webDriver, siteXpath);
         f.clear();
         f.sendKeys(s);
     }
 
     public static void generate(WebDriver webDriver) throws InterruptedException {
         //WebElement submit = webDriver.findElement(By.xpath(submitXpath));
-        WebElement submit = testHelper.waitElement(webDriver, submitXpath);
+        WebElement submit = TestHelper.waitElement(webDriver, submitXpath);
         submit.click();
     }
 
     public static String getPassword(WebDriver webDriver) throws InterruptedException {
-        WebElement f = testHelper.waitElement(webDriver, passwordXpath);
+        WebElement f = TestHelper.waitElement(webDriver, passwordXpath);
         //waitElements.waitValue(webDriver, passwordXpath, val);
 
         return f.getAttribute("value");
@@ -50,21 +50,21 @@ public class AngelForm {
 
     public static void assertPassword(WebDriver webDriver, String val) throws InterruptedException {
         //WebElement f = waitElements.waitValue(webDriver, passwordXpath, val);
-        testHelper.waitValue(webDriver, passwordXpath, val);
+        TestHelper.waitValue(webDriver, passwordXpath, val);
 
         //return f.getAttribute("value");
     }
 
     public static String getMaster(WebDriver webDriver) throws InterruptedException {
         //WebElement f = webDriver.findElement(By.xpath(masterXpath));
-        WebElement f = testHelper.waitElement(webDriver, masterXpath);
+        WebElement f = TestHelper.waitElement(webDriver, masterXpath);
         return f.getAttribute("value");
 
     }
 
     public static String getSite(WebDriver webDriver) throws InterruptedException {
         //WebElement f = webDriver.findElement(By.xpath(siteXpath));
-        WebElement f = testHelper.waitElement(webDriver, siteXpath);
+        WebElement f = TestHelper.waitElement(webDriver, siteXpath);
         return f.getAttribute("value");
     }
 
