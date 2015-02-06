@@ -23,7 +23,7 @@ public class StrahovatorPage {
         //WebElement m = TestHelper.webDriver.findElement(By.xpath(mainMenuXpath));
         //WebElement m = webDriver.findElement(By.xpath(mainMenuXpath));
         //List<WebElement> menu = m.findElements(By.tagName("a"));
-        List<WebElement> menu = TestHelper.webDriver.findElements(By.xpath("//div[@class='nav-collapse collapse']/ul[@class='nav']/li/a"));
+        List<WebElement> menu = TestHelper2.webDriver.findElements(By.xpath("//div[@class='nav-collapse collapse']/ul[@class='nav']/li/a"));
         Assert.assertEquals("Главная", menu.get(0).getText());
         Assert.assertEquals("ОСАГО", menu.get(1).getText());
         Assert.assertEquals("КАСКО", menu.get(2).getText());
@@ -34,7 +34,7 @@ public class StrahovatorPage {
      }
 
     public static void openMenuOSAGO() {
-        List<WebElement> menu = TestHelper.webDriver.findElements(By.xpath(mainMenuXpath2));
+        List<WebElement> menu = TestHelper2.webDriver.findElements(By.xpath(mainMenuXpath2));
         menu.get(1).click();
     }
 

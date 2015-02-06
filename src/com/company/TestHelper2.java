@@ -14,7 +14,7 @@ import java.io.IOException;
 /**
  * Created by Alex on 03.02.15.
  */
-public class TestHelper {
+public class TestHelper2 {
     public static WebDriver webDriver;
     public static boolean testPassed;
 

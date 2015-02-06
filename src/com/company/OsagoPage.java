@@ -1,7 +1,6 @@
 package com.company;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
 /**
@@ -16,11 +15,11 @@ public class OsagoPage extends StrahovatorPage{
     private static String dgoXpath = "//select[@id='dgo']";
 
     public static Select getFldTransport() {
-        return new Select(TestHelper.webDriver.findElement(By.xpath(transportXpath)));
+        return new Select(TestHelper2.webDriver.findElement(By.xpath(transportXpath)));
     }
 
     public static Select getFldDetails() {
-        return new Select(TestHelper.webDriver.findElement(By.xpath(detailsXpath)));
+        return new Select(TestHelper2.webDriver.findElement(By.xpath(detailsXpath)));
     }
 
 
@@ -31,42 +30,42 @@ public class OsagoPage extends StrahovatorPage{
 
 //////////////////////////////////////////////////////
     public static String getDefaultValueTransport() {
-        Select s = new Select(TestHelper.webDriver.findElement(By.xpath(transportXpath)));
+        Select s = new Select(TestHelper2.webDriver.findElement(By.xpath(transportXpath)));
         return s.getFirstSelectedOption().getText();
     }
 
     public static String getDefaultValueDetails() {
-        Select s = new Select(TestHelper.webDriver.findElement(By.xpath(detailsXpath)));
+        Select s = new Select(TestHelper2.webDriver.findElement(By.xpath(detailsXpath)));
         return s.getFirstSelectedOption().getText();
     }
 
     public static String getDefaultValueLocation() {
-        Select s = new Select(TestHelper.webDriver.findElement(By.xpath(locationXpath)));
+        Select s = new Select(TestHelper2.webDriver.findElement(By.xpath(locationXpath)));
         return s.getFirstSelectedOption().getText();
     }
 
     public static String getDefaultValueExperience() {
-        Select s = new Select(TestHelper.webDriver.findElement(By.xpath(experienceXpath)));
+        Select s = new Select(TestHelper2.webDriver.findElement(By.xpath(experienceXpath)));
         return s.getFirstSelectedOption().getText();
     }
 
     public static String getDefaultValuePeriod() {
-        Select s = new Select(TestHelper.webDriver.findElement(By.xpath(periodXpath)));
+        Select s = new Select(TestHelper2.webDriver.findElement(By.xpath(periodXpath)));
         return s.getFirstSelectedOption().getText();
     }
 
     public static String getDefaultValueDGO() {
-        Select s = new Select(TestHelper.webDriver.findElement(By.xpath(dgoXpath)));
+        Select s = new Select(TestHelper2.webDriver.findElement(By.xpath(dgoXpath)));
         return s.getFirstSelectedOption().getText();
     }
 
     public static void SetValueFldTransport(String i) {
-        Select s = new Select(TestHelper.webDriver.findElement(By.xpath(transportXpath)));
+        Select s = new Select(TestHelper2.webDriver.findElement(By.xpath(transportXpath)));
         s.selectByValue("i");
     }
 
     public static void SetValueFldDetails(String i) {
-        Select s = new Select(TestHelper.webDriver.findElement(By.xpath(detailsXpath)));
+        Select s = new Select(TestHelper2.webDriver.findElement(By.xpath(detailsXpath)));
         s.selectByValue("i");
     }
 

@@ -16,7 +16,7 @@ import java.io.IOException;
  * Created by user on 2/4/15.
  */
 @RunWith(JUnit4.class)
-public class StrahovatorTest extends TestHelper {
+public class StrahovatorTest extends TestHelper2 {
 
 //    WebDriver webDriver;
 //    boolean testPassed;
