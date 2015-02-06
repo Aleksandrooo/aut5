@@ -26,8 +26,8 @@ public class StrahovatorTest extends TestHelper {
 
     @Before
     public void  Init() throws InterruptedException {
-        //System.setProperty("webdriver.chrome.driver", "D:/AUT5/chromedriver.exe");
-        System.setProperty("webdriver.chrome.driver", "D:/Soft/IDE/chromedriver_win32/chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "D:/AUT5/chromedriver.exe");
+       // System.setProperty("webdriver.chrome.driver", "D:/Soft/IDE/chromedriver_win32/chromedriver.exe");
         webDriver = new ChromeDriver();
         webDriver.manage().window().maximize();
         StrahovatorPage.open(webDriver);
@@ -39,8 +39,8 @@ public class StrahovatorTest extends TestHelper {
     public void  CleanUp() throws IOException {
         if (!testPassed) {
             File scrFile = ((TakesScreenshot)webDriver).getScreenshotAs(OutputType.FILE);
-            //FileUtils.copyFile(scrFile, new File("D:\\AUT5\\temp\\" + name.getMethodName() + ".png"));
-            FileUtils.copyFile(scrFile, new File("d:\\Testing\\temp\\" + name.getMethodName() + ".png"));
+            FileUtils.copyFile(scrFile, new File("D:\\AUT5\\temp\\" + name.getMethodName() + ".png"));
+           // FileUtils.copyFile(scrFile, new File("d:\\Testing\\temp\\" + name.getMethodName() + ".png"));
         }
         webDriver.quit();
     }
@@ -74,9 +74,9 @@ public class StrahovatorTest extends TestHelper {
         //OsagoPage.getFldTransport().selectByIndex(2);
         OsagoPage.SetValueFldTransport("1");
         OsagoPage.SetValueFldDetails("b1");
-        Assert.assertEquals("/images/custom/osago/ut.gif", OsagoPage.getResultCompany(1));
-        Assert.assertEquals("/images/custom/osago/sk.gif", OsagoPage.getResultCompany(2));
-        Assert.assertEquals("/images/custom/osago/il.gif", OsagoPage.getResultCompany(3));
+        Assert.assertEquals("ut.gif", OsagoPage.getResultCompany(0));
+        Assert.assertEquals("sk.gif", OsagoPage.getResultCompany(1));
+        Assert.assertEquals("il.gif", OsagoPage.getResultCompany(2));
         testPassed = true;
     }
 
