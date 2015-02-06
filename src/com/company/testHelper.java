@@ -14,9 +14,9 @@ import java.io.IOException;
 /**
  * Created by Alex on 03.02.15.
  */
-public class testHelper {
-    static WebDriver webDriver;
-    static boolean testPassed;
+public class TestHelper {
+    public static WebDriver webDriver;
+    public static boolean testPassed;
 
     public TestName name = new TestName();
 
@@ -44,15 +44,15 @@ public class testHelper {
         int timeout = 30000, timepassed = 0, s;
         while(timepassed < timeout) {
             s = webDriver.findElements(By.xpath(path)).size();
-            //if (webDriver.findElements(By.xpath(path)).size() > 0) {
-            if (s > 0) {
+            if (webDriver.findElements(By.xpath(path)).size() > 0) {
+            //if (s > 0) {
                 WebElement we = webDriver.findElements(By.xpath(path)).get(0);
-                System.out.println(we.getAttribute("value"));
+                //System.out.println(we.getAttribute("value"));
                 return we;
             }
             Thread.sleep(100);
             timepassed += 100;
-            System.out.println(timepassed);
+            //System.out.println(timepassed);
         }
         Assert.fail();
         return null;
