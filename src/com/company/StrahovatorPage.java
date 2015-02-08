@@ -17,6 +17,24 @@ public class StrahovatorPage {
     public static void open(WebDriver webDriver) {
        webDriver.get("https://strahovator.com.ua/");
        webDriver.manage().window().maximize();
+//       TestHelper.webDriver.manage().window().maximize();
+//       TestHelper.webDriver.navigate().back();
+//       TestHelper.webDriver.switchTo().alert().accept();
+//       TestHelper.webDriver.switchTo().frame("topFrame");
+//       TestHelper.webDriver.switchTo().parentFrame();
+    }
+
+    private static int convertMenuNameToIndex(String menuName) {
+        if (menuName.equals("Главная"))return 0;
+        if (menuName.equals("ОСАГО"))return 1;
+        if (menuName.equals("КАСКО"))return 2;
+        if (menuName.equals("Зеленая карта"))return 3;
+        if (menuName.equals("Для выезжающих за границу"))return 4;
+        if (menuName.equals("Как мы работаем"))return 5;
+        if (menuName.equals("Контакты"))return 6;
+        else
+            Assert.fail("Unknown MainMenu requested");
+        return 100;
     }
 
      static void CheckNameMenu() {
@@ -33,10 +51,8 @@ public class StrahovatorPage {
         Assert.assertEquals("Контакты", menu.get(6).getText());
      }
 
-    public static void openMenuOSAGO() {
+    public static void clickMenu(String menuName) {
         List<WebElement> menu = TestHelper.webDriver.findElements(By.xpath(mainMenuXpath2));
-        menu.get(1).click();
+        menu.get(convertMenuNameToIndex(menuName)).click();
     }
-
-
 }
