@@ -1,11 +1,14 @@
 package com.company;
 
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
-import org.testng.Assert;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Created by trofimenko on 06.02.2015.
@@ -19,6 +22,13 @@ public class OsagoPage extends StrahovatorPage{
     private static String dgoXpath = "//select[@id='dgo']";
     private static String imgXpath = "//img [@class='osago_partner_logo']";
     private static String priceCompanyXpath = "//span[@class='price']";
+    private static String franchiseCompanyXpath = "//a[@class='tt2'][text()='Франшиза']";
+    private static String butBuyXpath = "//button[@class='btn btn-success osago_order'][text()='купить']";
+
+    private static String[] franchiseText = new String[]{
+            "Это та часть страховой выплаты, которую в любом случае необходимо будет оплатить Вам самостоятельно, если произойдет ДТП по Вашей вине",
+            "Это та часть страховой выплаты, которую в любом случае необходимо будет оплатить Вам самостоятельно, если произойдет ДТП по Вашей вине"
+    };
 
     private static Map<String, String> fieldNameOsago = new HashMap<String, String>(){{
         put("я хочу застраховать", transportXpath);
@@ -30,9 +40,8 @@ public class OsagoPage extends StrahovatorPage{
     }};
 
     public static String[] mappingValueDetailsToTransport(String Transport){
-        String[] s = null;
         if(Transport.equals("легковой автомобиль")){
-            return s = new String[]{
+            return new String[]{
                     "--необходимо выбрать--",
                     "объем двигателя до 1600 см³ включительно",
                     "объем двигателя от 1601 до 2000 см³",
@@ -40,33 +49,33 @@ public class OsagoPage extends StrahovatorPage{
                     "объем двигателя 3001 см³ и более"};
         }
         if(Transport.equals("прицеп")){
-            return s = new String[]{
+            return new String[]{
                     "--необходимо выбрать--",
                     "для легкового автомобиля",
                     "для грузового автомобиля"};
         }
         if(Transport.equals("автобус")){
-            return s = new String[]{
+            return new String[]{
                     "--необходимо выбрать--",
                     "вместимость до 20 мест включительно",
                     "вместимость более 20 мест",
                     "объем двигателя 3001 см³ и более"};
         }
         if(Transport.equals("грузовой автомобиль")){
-            return s = new String[]{
+            return new String[]{
                     "--необходимо выбрать--",
                     "грузоподъемность до 2 тонн включительно",
                     "грузоподъемность более 2 тонн"};
         }
         if(Transport.equals("мотоцикл или мотороллер")){
-            return s = new String[]{
+            return new String[]{
                     "--необходимо выбрать--",
                     "объем двигателя до 300 см³ включительно",
                     "объем двигателя более 300 см³"};
         }
         else
             org.junit.Assert.fail("Unknown type of machine");
-        return s;
+        return null;
     }
 
 
@@ -186,8 +195,28 @@ public class OsagoPage extends StrahovatorPage{
                 Assert.assertEquals(mappingValueDetailsToTransport(val)[i], s.getOptions().get(i).getText());
             }
         }
+    }
 
+    public static void franchise(String fieldName, String val) {
+        //WebElement w = TestHelper.webDriver.findElement(By.xpath(convertFldName(fieldName))); //priceCompanyXpath));
+        //w.(ConverValue());
+        Select s = new Select(TestHelper.webDriver.findElement(By.xpath(fieldNameOsago.get(fieldName))));
+        s.selectByVisibleText(val);
+    }
 
+    public static void checkFranchise(int j) throws InterruptedException {
+        WebElement w = TestHelper.webDriver.findElement(By.xpath(franchiseCompanyXpath));
+        new Actions(TestHelper.webDriver).moveToElement(w).perform();
+        //Thread.sleep(2000);
+        //List<WebElement> fran = TestHelper.webDriver.findElements(By.xpath(franchiseCompanyXpath + "/following-sibling::div[1]/div[@class='tooltip-inner']/p"));
+        //Assert.assertEquals(franchiseText[j], fran.get(j).getText());
+        TestHelper.waitText(TestHelper.webDriver,
+                franchiseCompanyXpath + "/following-sibling::div[1]/div[@class='tooltip-inner']/p",
+                franchiseText[j]);
+    }
+
+    public static void clickButBuy(int i) {
+        TestHelper.webDriver.findElements(By.xpath(butBuyXpath)).get(i).click();
 
     }
 }
