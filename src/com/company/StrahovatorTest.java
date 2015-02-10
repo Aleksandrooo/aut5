@@ -108,6 +108,10 @@ public class StrahovatorTest extends TestHelper {
         OsagoPage.setDropDown("я хочу застраховать", "легковой автомобиль");
         OsagoPage.setDropDown("детали", "объем двигателя до 1600 см³ включительно");
         OsagoPage.clickButBuy(0);
+        ChoiceOfRegistrationPage.clickWithoutRegistrationLink();
+        ChoiceOfRegistrationPage.clickBuyForLessAt20UAH();
+        QuestionnairePage.fillNormalCustomer();
+
         testPassed = true;
     }
 

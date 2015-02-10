@@ -217,6 +217,5 @@ public class OsagoPage extends StrahovatorPage{
 
     public static void clickButBuy(int i) {
         TestHelper.webDriver.findElements(By.xpath(butBuyXpath)).get(i).click();
-
     }
 }
