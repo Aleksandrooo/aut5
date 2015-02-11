@@ -13,7 +13,7 @@ public class QuestionnairePage {
     private static String personAddressStreetXpath = "//input[@id='policy_registration_address_street']";
     private static String personAddressHouseXpath = "//input[@id='policy_registration_address_house']";
     private static String personAddressFlatXpath = "//input[@id='policy_registration_address_app']";
-//    private static String parentNameXpath = "//input[@id='policy_parent_name']";
+    private static String INNXpath = "//input[@id='policy_identity_code']";
 //    private static String parentNameXpath = "//input[@id='policy_parent_name']";
 //    private static String parentNameXpath = "//input[@id='policy_parent_name']";
 //    private static String parentNameXpath = "//input[@id='policy_parent_name']";

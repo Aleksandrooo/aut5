@@ -22,8 +22,8 @@ public class TestHelper {
 
     @Before
     public void  Init() throws InterruptedException {
-        //System.setProperty("webdriver.chrome.driver", "D:/AUT5/chromedriver.exe");
-        System.setProperty("webdriver.chrome.driver", "D:/Soft/IDE/chromedriver_win32/chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "D:/AUT5/chromedriver.exe");
+        //System.setProperty("webdriver.chrome.driver", "D:/Soft/IDE/chromedriver_win32/chromedriver.exe");
         webDriver = new ChromeDriver();
         StrahovatorPage.open(webDriver);
         testPassed = false;
@@ -34,8 +34,8 @@ public class TestHelper {
     public void  CleanUp() throws IOException {
         if (!testPassed) {
             File scrFile = ((TakesScreenshot)webDriver).getScreenshotAs(OutputType.FILE);
-            //FileUtils.copyFile(scrFile, new File("D:\\AUT5\\temp\\" + name.getMethodName() + ".png"));
-            FileUtils.copyFile(scrFile, new File("d:\\Testing\\temp\\" + name.getMethodName() + ".png"));
+            FileUtils.copyFile(scrFile, new File("D:\\AUT5\\temp\\" + name.getMethodName() + ".png"));
+            //FileUtils.copyFile(scrFile, new File("d:\\Testing\\temp\\" + name.getMethodName() + ".png"));
         }
         webDriver.quit();
     }
